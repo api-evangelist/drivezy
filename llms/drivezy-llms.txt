@@ -1,0 +1,98 @@
+# Drivezy
+
+> Drivezy (founded 2015 in Bengaluru, India as JustRide) operated a peer-to-peer
+> vehicle-sharing and self-drive rental marketplace for cars, bikes and scooters,
+> letting vehicle owners list their vehicles for rent alongside a company-operated
+> fleet. This file is a third-party profile assembled by API Evangelist from public
+> sources; it is not published by Drivezy.
+
+## Status
+
+Drivezy publishes no public API, no developer portal, and no machine-readable
+contract, and the company no longer operates a website of its own.
+
+As of 2026-08-12 the domain drivezy.com does not resolve. The registry still
+delegates it to Cloudflare nameservers (dina/jeremy.ns.cloudflare.com), but those
+nameservers answer REFUSED — the zone has been removed from the account behind them —
+so every recursive lookup returns SERVFAIL. The subdomain that once served the mobile
+application backend, secure.drivezy.com, resolves to nothing. There is no host to
+probe, no TLS certificate to read, and no SPF, DMARC, CAA or DNSSEC record to
+retrieve. The name itself is registered through 2027-04-20.
+
+The company appears in the API Evangelist catalog through a secondary-market listing.
+
+## Do not mistake drivezy.com for Drivezy
+
+The domain left the company's control before it went dark, and this matters for
+anyone re-checking it later:
+
+- 2012 to mid-2024 — the real company site, "Drivezy | Self-Drive Car, Bike & Scooter
+  Rentals".
+- 2025 — a bare WordPress 6.7.1 shell titled "DRIVEZY" with no rental product.
+- 2025-12 to 2026-05 — an unrelated Indonesian online-gambling SEO spam site
+  ("MULTIBET88"), the last thing the Internet Archive captured at this address.
+- 2026-05 onward — nothing; the zone is unresolvable.
+
+If drivezy.com starts answering again, whatever answers should not be treated as this
+company without fresh evidence. The separate live site at drivezy.in trades under the
+Drivezy name but names neither JustRide nor the Bengaluru company anywhere on it, so
+it is not wired into this profile either.
+
+## Was there ever an API?
+
+No public one. Archived captures of secure.drivezy.com show `/api/booking`,
+`/api/userCart`, `/api/admin/accident`, `/city`, `/property` and `/loginCheck` — the
+private backend of the consumer mobile app, with `includes=`, `query=`, `order=` and
+`limit=` query parameters that are the request grammar of Drivezy's own open-source
+`laravel-record-manager` package. It was never a documented API product.
+developer.drivezy.com, docs.drivezy.com and api.drivezy.com have zero Internet Archive
+captures — the company never ran a developer program.
+
+Four `/.well-known/` paths on drivezy.com are indexed in the Wayback CDX with status
+200 (security.txt, openid-configuration, gpc.json, dnt-policy.txt). All four archived
+bodies were fetched and all four are HTML error pages titled "404 Not Found". Drivezy
+never served a security.txt or an OpenID discovery document. The 200s are soft-404s.
+
+## What Drivezy did publish
+
+- GitHub organization: https://github.com/drivezy — 14 public repositories, all
+  internal platform building blocks (Laravel packages, JavaScript utilities, a React
+  admin panel). Newest push: 2021-02-09. Every repository tree was walked: no OpenAPI,
+  Swagger, AsyncAPI, GraphQL schema, Postman collection, apis.json or .proto file
+  exists in any of them.
+- Six MIT-licensed Laravel/PHP packages under the `drivezy` Packagist vendor
+  namespace (laravel-utility, laravel-access-manager, laravel-admin,
+  laravel-asset-manager, laravel-campaign-manager, laravel-record-manager). Newest
+  release 2021-02-09.
+- Seven JavaScript / React Native utility packages on npm. Only one,
+  `storage-utility` (v3.1.3, 2020-09-25, MIT), is attested first-party by its registry
+  metadata — its npm homepage and repository fields both resolve to
+  github.com/drivezy/storage-utility. The rest carry the Drivezy name but are published
+  from individual maintainer accounts rather than an @drivezy scope.
+
+None of these are API client libraries — they are server-side and front-end framework
+components used to build Drivezy's own platform. No `SDKs` pointer is emitted.
+
+## Artifacts in this profile
+
+- packages/drivezy-packages.yml — the published package inventory, with the version
+  and publish date read from each registry on 2026-08-12.
+- well-known/drivezy-well-known.yml — the recorded absence: every /.well-known/ and
+  spec-discovery path probed live and in the archive, the DNS diagnosis behind the
+  failure, and the domain-takeover timeline.
+
+There is no a2a/, mcp/, openapi/, asyncapi/, graphql/ or skills/ directory in this
+repo, and there should not be. An agent card, an MCP manifest or a spec would have to
+be authored on the provider's behalf to exist here, and a defunct company cannot be
+credited with surfaces it never served.
+
+## Corrections
+
+This profile is maintained independently. If Drivezy (or a successor) publishes an
+API, open an issue on https://github.com/api-evangelist/drivezy or email
+info@apievangelist.com and the profile will be re-run.
+
+generated: 2026-08-12
+method: generated
+source: apis.yml + repo artifacts + live DNS/HTTP probes + Internet Archive CDX
+(no provider-published llms.txt exists; drivezy.com does not resolve)

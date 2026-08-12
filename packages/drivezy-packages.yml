@@ -1,0 +1,210 @@
+generated: '2026-08-12'
+method: searched
+source: https://packagist.org/packages/list.json?vendor=drivezy + https://registry.npmjs.org/-/v1/search?text=drivezy
+note: >-
+  Drivezy published no client SDK for its own API — no public developer program or
+  API reference was ever found (see x-coverage in apis.yml). What it did publish is a
+  set of first-party OPEN SOURCE building blocks used to build its own platform:
+  six Laravel/PHP packages under the `drivezy` Packagist vendor namespace (which maps
+  1:1 to repositories in the github.com/drivezy organization) and seven JavaScript /
+  React Native utility packages on npm. These are internal framework libraries, not
+  API client libraries, so no `SDKs` pointer is emitted for them. Every entry below
+  carries the version + publish date read from the registry metadata endpoint on
+  2026-08-12; the newest release across the whole set is 2021-02-09, and the company's
+  primary domain (drivezy.com) no longer resolves.
+  ROUND 2 (2026-08-12): npm `storage-utility` was added. It was missed by a
+  text=drivezy registry search because the Drivezy name appears nowhere in the package
+  name — it was found by walking the github.com/drivezy repository list instead, and
+  its npm `homepage`/`repository` metadata resolves to github.com/drivezy/storage-utility,
+  which is the strongest first-party attestation of any npm entry here. It is also the
+  newest npm release in the set (2020-09-25), superseding the previously-recorded
+  2020-04-25. `drivezy-web-utils1` was added as an explicit row rather than being
+  silently excluded as a duplicate scaffold: an unrecorded exclusion is indistinguishable
+  from an unchecked package.
+packages:
+- language: php
+  registry: packagist
+  name: drivezy/laravel-utility
+  url: https://packagist.org/packages/drivezy/laravel-utility
+  install: composer require drivezy/laravel-utility
+  official: true
+  license: MIT
+  version: v1.0.6
+  published: '2021-02-09'
+  description: Base functionality for a scalable application.
+  repository: https://github.com/drivezy/laravel-utility
+- language: php
+  registry: packagist
+  name: drivezy/laravel-access-manager
+  url: https://packagist.org/packages/drivezy/laravel-access-manager
+  install: composer require drivezy/laravel-access-manager
+  official: true
+  license: MIT
+  version: v1.0.4
+  published: '2021-02-09'
+  description: To manage the different access levels across multiple records, routes.
+  repository: https://github.com/drivezy/laravel-access-manager
+- language: php
+  registry: packagist
+  name: drivezy/laravel-admin
+  url: https://packagist.org/packages/drivezy/laravel-admin
+  install: composer require drivezy/laravel-admin
+  official: true
+  license: MIT
+  version: v0.3.7
+  published: '2020-03-17'
+  description: Api resources for laravel admin.
+  repository: https://github.com/drivezy/laravel-admin
+- language: php
+  registry: packagist
+  name: drivezy/laravel-asset-manager
+  url: https://packagist.org/packages/drivezy/laravel-asset-manager
+  install: composer require drivezy/laravel-asset-manager
+  official: true
+  license: MIT
+  version: v0.1.0
+  published: '2019-12-16'
+  description: Manages asset regarding availability and unavailability.
+  repository: https://github.com/drivezy/laravel-asset-manager
+- language: php
+  registry: packagist
+  name: drivezy/laravel-campaign-manager
+  url: https://packagist.org/packages/drivezy/laravel-campaign-manager
+  install: composer require drivezy/laravel-campaign-manager
+  official: true
+  license: MIT
+  version: v1.0.4
+  published: '2019-10-02'
+  description: To manage marketing campaigns and coupons.
+  repository: https://github.com/drivezy/laravel-campaign-manager
+- language: php
+  registry: packagist
+  name: drivezy/laravel-record-manager
+  url: https://packagist.org/packages/drivezy/laravel-record-manager
+  install: composer require drivezy/laravel-record-manager
+  official: true
+  license: MIT
+  version: '7.1'
+  published: '2019-03-05'
+  description: To efficiently manage records & its audits.
+  repository: https://github.com/drivezy/laravel-record-manager
+- language: javascript
+  registry: npm
+  name: storage-utility
+  url: https://www.npmjs.com/package/storage-utility
+  install: npm install storage-utility
+  official: true
+  license: MIT
+  version: 3.1.3
+  published: '2020-09-25'
+  description: >-
+    Storage engine exposing one set of APIs for storage operations across web and
+    React Native (localStorage / asyncStorage), with time-based invalidation.
+  repository: https://github.com/drivezy/storage-utility
+  note: >-
+    First-party by registry attestation — the npm `homepage` and `repository` fields
+    both point at github.com/drivezy/storage-utility, and the repo's package.json
+    declares the same name and version 3.1.3. Published under maintainer shubhamkes.
+    Unpublished-name caveat: the package name carries no vendor prefix or scope, so it
+    is invisible to any name-based registry search for this company.
+- language: javascript
+  registry: npm
+  name: react-native-drivezy-ui-components
+  url: https://www.npmjs.com/package/react-native-drivezy-ui-components
+  install: npm install react-native-drivezy-ui-components
+  official: false
+  version: 1.7.8
+  published: '2020-04-25'
+  description: React Native UI component set carrying the Drivezy name.
+  note: >-
+    Published under an individual npm maintainer account (hkxicor), not an @drivezy
+    org scope, so first-party status is not confirmed by registry metadata.
+- language: javascript
+  registry: npm
+  name: drivezy-web-utils
+  url: https://www.npmjs.com/package/drivezy-web-utils
+  install: npm install drivezy-web-utils
+  official: false
+  version: 0.1.3
+  published: '2019-07-29'
+  description: Web utility providing loader, modal and other web utilities.
+  note: >-
+    Published by individual maintainer shubhamkes; a same-named repo exists in the
+    github.com/drivezy org, but the registry metadata does not attest first-party.
+- language: javascript
+  registry: npm
+  name: drivezy-elements
+  url: https://www.npmjs.com/package/drivezy-elements
+  install: npm install drivezy-elements
+  official: false
+  version: 1.0.1
+  published: '2019-12-03'
+  description: UI starter kit for web apps.
+  note: Published by individual maintainer 32teeths; first-party status unconfirmed.
+- language: javascript
+  registry: npm
+  name: drivezy-js-utility
+  url: https://www.npmjs.com/package/drivezy-js-utility
+  install: npm install drivezy-js-utility
+  official: false
+  version: 0.0.7
+  published: '2018-08-01'
+  description: JavaScript utility functions.
+  note: >-
+    Published by individual maintainer shubhamkes; mirrors github.com/drivezy/js-utility
+    (pushed 2018-08-01) but first-party status is unconfirmed by registry metadata.
+- language: javascript
+  registry: npm
+  name: drivezy-analytic-utils
+  url: https://www.npmjs.com/package/drivezy-analytic-utils
+  install: npm install drivezy-analytic-utils
+  official: false
+  version: 1.0.0
+  published: '2018-07-26'
+  description: Utility methods used in analytics events.
+  note: >-
+    Published by individual maintainer nehrakln07; mirrors
+    github.com/drivezy/drivezy-analytics-utils. First-party status unconfirmed.
+- language: javascript
+  registry: npm
+  name: drivezy-web-utils1
+  url: https://www.npmjs.com/package/drivezy-web-utils1
+  install: npm install drivezy-web-utils1
+  official: false
+  version: 0.0.7
+  published: '2018-07-23'
+  description: Implements all the Utility methods used in web.
+  note: >-
+    A duplicate/typo publish of drivezy-web-utils, six days older and never updated.
+    Its npm `repository` points at shubhamkes/drivezy-web-utils — a personal namespace,
+    not the drivezy org. Recorded rather than dropped so the exclusion is auditable.
+x-evidence:
+  checked: '2026-08-12'
+  registries_queried:
+  - url: https://packagist.org/packages/list.json?vendor=drivezy
+    status: 200
+    result: 6 packages (re-confirmed round 2 — unchanged)
+  - url: https://registry.npmjs.org/-/v1/search?text=drivezy&size=50
+    status: 200
+    result: 6 name-matching packages
+  - url: https://registry.npmjs.org/storage-utility
+    status: 200
+    result: >-
+      first-party by repository/homepage metadata; found via the GitHub org tree, not
+      via a name search
+  - url: https://api.github.com/orgs/drivezy/repos?per_page=100
+    status: 200
+    result: 14 public repos, newest push 2021-02-09
+  npm_names_probed_and_absent:
+  - drivezy-storage-utility
+  - drivezy-user-utils
+  - drivezy-admin-utils
+  - tracker-status
+  - '@drivezy/storage-utility'
+  registries_with_no_match:
+  - pypi.org
+  - crates.io
+  - rubygems.org
+  - nuget.org
+  - search.maven.org
+  - pkg.go.dev

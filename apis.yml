@@ -1,10 +1,27 @@
 aid: drivezy
 name: Drivezy
-description: 'Drivezy is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: 'Drivezy — founded in Bengaluru, India in 2015 and originally launched
+  as JustRide — operated a peer-to-peer vehicle-sharing and self-drive rental
+  marketplace covering cars, motorcycles and scooters, pairing a company-operated
+  fleet with vehicles listed by individual owners. It raised venture funding through
+  a Series B and held acquisition talks with Yamaha. Drivezy never ran a public
+  developer program: no portal, no API reference and no machine-readable contract
+  were ever published. The /api/* endpoints visible in archived captures of
+  secure.drivezy.com were the private backend of its consumer mobile app. As of
+  2026-08-12 drivezy.com does not resolve: the registry still delegates it to
+  Cloudflare nameservers, but those nameservers answer REFUSED, so every lookup
+  returns SERVFAIL. The domain had already left the company before it went dark —
+  Internet Archive captures show the real site through mid-2024, a bare WordPress
+  shell through 2025, and unrelated Indonesian gambling SEO spam from December 2025
+  until the final capture on 2026-05-11 — so a drivezy.com that resolves again
+  should not be read as this company without fresh evidence. What remains public is
+  the github.com/drivezy organization and thirteen packages on Packagist and npm —
+  internal Laravel and JavaScript platform libraries, not API client SDKs.'
 url: https://raw.githubusercontent.com/api-evangelist/drivezy/refs/heads/main/apis.yml
+image: https://avatars.githubusercontent.com/u/33040400?v=4
 x-type: company
 x-source: harvest:secondary-market
+x-harvest-source-url: https://forgeglobal.com/drivezy_stock/
 x-tier: stub
 x-tier-reason: harvest
 specificationVersion: '0.20'
@@ -12,6 +29,13 @@ created: '2026-08-12'
 modified: '2026-08-12'
 tags:
 - Company
+- Transportation
+- Mobility
+- Car Rental
+- Vehicle Sharing
+- Marketplace
+- India
+- Open Source
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -19,5 +43,54 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
-- type: Website
+- type: SecondaryMarket
   url: https://forgeglobal.com/drivezy_stock/
+- type: GitHubOrganization
+  url: https://github.com/drivezy
+- type: Packages
+  url: packages/drivezy-packages.yml
+- type: LLMsTxt
+  url: llms/drivezy-llms.txt
+x-enrichment:
+  date: '2026-08-12'
+  status: minimal
+  artifacts_added: 3
+  artifacts_updated: 3
+  pass: local-v1
+  rounds: 2
+  note: >-
+    Round 2 re-verified round 1 rather than adding surface, because there is no surface
+    to add. It corrected the DNS diagnosis (delegation exists; the Cloudflare
+    authorities answer REFUSED), corrected the "last captured 2025-10-19" claim,
+    documented that drivezy.com was squatted by an unrelated gambling site before it
+    went dark, recorded that all four archived /.well-known/ 200s are soft-404 HTML,
+    and added the one genuinely first-party npm package (storage-utility) that a
+    name-based registry search cannot find. No WellKnown, SecurityTxt, AgentCard,
+    DomainSecurity, SDKs, Plans or RateLimits pointer is emitted: every one of those
+    would assert a surface this company does not serve.
+x-coverage:
+  state: none
+  reason: defunct
+  detail: >-
+    drivezy.com is still delegated to dina/jeremy.ns.cloudflare.com but those
+    authoritative nameservers answer REFUSED, so every lookup SERVFAILs and no host of
+    the company's — including the app backend secure.drivezy.com — resolves at all;
+    the Internet Archive shows the domain was squatted by an unrelated Indonesian
+    gambling site from December 2025 until its final capture on 2026-05-11, and the
+    only real remnant is a GitHub organization last pushed 2021-02-09 whose fourteen
+    repository trees contain no OpenAPI, Swagger, AsyncAPI, GraphQL, Postman or .proto
+    artifact.
+  evidence:
+  - url: https://drivezy.com/
+    status: 0
+  - url: https://secure.drivezy.com/
+    status: 0
+  - url: https://drivezy.com/.well-known/agent-card.json
+    status: 0
+  - url: http://web.archive.org/web/20260511053620id_/https://drivezy.com/
+    status: 200
+  - url: https://api.github.com/orgs/drivezy/repos?per_page=100
+    status: 200
+  - url: https://packagist.org/packages/list.json?vendor=drivezy
+    status: 200
+  checked: '2026-08-12'

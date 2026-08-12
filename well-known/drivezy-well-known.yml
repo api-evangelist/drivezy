@@ -1,0 +1,228 @@
+generated: '2026-08-12'
+method: probed
+source: live HTTP + DNS probes of every Drivezy host on record
+note: >-
+  RECORDED ABSENCE, NOT A SURFACE. No `WellKnown` or `SecurityTxt` pointer is emitted
+  from this file, because nothing returned a document. Every probe below failed at DNS
+  resolution, not at HTTP, so there is no host of the company's own left to serve a
+  /.well-known/ surface.
+  ROUND 2 (2026-08-12) sharpened two things the first pass got approximately right and
+  literally wrong. (1) The DNS diagnosis: delegation has NOT been removed. The registry
+  still delegates drivezy.com to DINA/JEREMY.NS.CLOUDFLARE.COM, but those nameservers
+  answer REFUSED — the zone has been dropped from the Cloudflare account behind them —
+  and recursive resolvers surface that as SERVFAIL. That is a different failure from
+  NXDOMAIN and worth stating precisely, because a REFUSED-at-authority domain can be
+  brought back by whoever holds the account, whereas the name itself is not expired
+  until 2027-04-20. (2) The "last captured 2025-10-19" claim was wrong and is corrected
+  in domain_history below: the Wayback record runs to 2026-05-11, but what was captured
+  in the final eighteen months is NOT Drivezy.
+host: https://drivezy.com
+host_status: dns-failure
+documents:
+- path: /.well-known/security.txt
+  status: 0
+  error: could not resolve host (NXDOMAIN/SERVFAIL — no NS delegation)
+- path: /.well-known/openid-configuration
+  status: 0
+  error: could not resolve host
+- path: /.well-known/oauth-authorization-server
+  status: 0
+  error: could not resolve host
+- path: /.well-known/api-catalog
+  status: 0
+  error: could not resolve host
+- path: /.well-known/ai-plugin.json
+  status: 0
+  error: could not resolve host
+- path: /.well-known/agent-card.json
+  status: 0
+  error: could not resolve host
+- path: /.well-known/agent.json
+  status: 0
+  error: could not resolve host
+dns:
+  domain: drivezy.com
+  ns: []
+  a: []
+  answer: 'SERVFAIL (dig drivezy.com A) — authoritative nameservers answer REFUSED'
+  delegation_present: true
+  delegated_to:
+  - dina.ns.cloudflare.com
+  - jeremy.ns.cloudflare.com
+  authoritative_probe:
+    query: dig @dina.ns.cloudflare.com drivezy.com A
+    rcode: REFUSED
+    interpretation: >-
+      The nameservers are still named in the registry delegation but no longer host the
+      zone, which is what a Cloudflare zone deleted from its account looks like from the
+      outside. Recursive resolvers convert REFUSED-from-every-authority into SERVFAIL.
+  dnssec:
+    ds_at_parent: none
+    query: dig drivezy.com DS
+    rcode: NOERROR
+    note: The parent (.com) answers normally and publishes no DS record — the zone is
+      not signed. The failure is entirely at the child's authorities.
+  records_unobtainable:
+    reason: zone unresolvable
+    types: [A, AAAA, NS, MX, TXT, CAA, SOA]
+    spf: unobtainable
+    dmarc: unobtainable (_dmarc.drivezy.com also SERVFAIL)
+    tls: >-
+      no connection possible — openssl s_client to drivezy.com:443 fails at hostname
+      resolution, so there is no certificate, no HSTS header and no protocol version to
+      record.
+  registration: registered via GoDaddy, registry expiry 2027-04-20, statuses
+    clientDelete/Renew/Transfer/UpdateProhibited
+  subdomains_checked:
+  - host: secure.drivezy.com
+    a: []
+    note: carried the mobile-app backend (/api/booking, /api/userCart) in the Wayback record
+  - host: api.drivezy.com
+    a: []
+  - host: app.drivezy.com
+    a: []
+  - host: developer.drivezy.com
+    a: []
+  - host: docs.drivezy.com
+    a: []
+archived_well_known_probe:
+  note: >-
+    Because the live host is gone, the Wayback CDX index was queried for any
+    /.well-known/ path ever captured on drivezy.com, so an absence today is not mistaken
+    for an absence always. Four paths are indexed with statuscode 200 — and ALL FOUR ARE
+    SOFT-404s. Each archived body was fetched and every one is the same HTML error page
+    whose <title> is "404 Not Found". This is the exact false-credit pattern the pipeline
+    warns about: a CDX status column, or any probe that trusts the status line without
+    reading the body, would have credited Drivezy with a served security.txt and a served
+    OpenID discovery document. It served neither, ever. 200 is not evidence.
+  source: http://web.archive.org/cdx/search/cdx?url=drivezy.com&matchType=domain
+  paths_indexed:
+  - path: /.well-known/security.txt
+    cdx_status: 200
+    body_verdict: soft-404 (HTML error page, title "404 Not Found")
+    document: false
+  - path: /.well-known/openid-configuration
+    cdx_status: 200
+    body_verdict: soft-404 (HTML error page, title "404 Not Found")
+    document: false
+  - path: /.well-known/gpc.json
+    cdx_status: 200
+    body_verdict: soft-404 (HTML error page, title "404 Not Found")
+    document: false
+  - path: /.well-known/dnt-policy.txt
+    cdx_status: 200
+    body_verdict: soft-404 (HTML error page, title "404 Not Found")
+    document: false
+  - path: /.well-known/ai-plugin.json
+    cdx_status: 404
+    document: false
+  - path: /.well-known/assetlinks.json
+    cdx_status: 404
+    document: false
+  - path: /.well-known/nodeinfo
+    cdx_status: 404
+    document: false
+  - path: /.well-known/trust.txt
+    cdx_status: 404
+    document: false
+  real_documents_found: 0
+domain_history:
+  note: >-
+    WHY THIS MATTERS FOR RE-RUNS: drivezy.com left the company's control before it went
+    dark, and for the last stretch of its life it served content that has nothing to do
+    with vehicle rental. Any future automated pass that finds drivezy.com resolving again
+    must NOT treat whatever answers as Drivezy. This timeline is the guard against that.
+  source: http://web.archive.org/cdx/search/cdx?url=drivezy.com — <title> read from the
+    raw archived body at each sampled timestamp
+  timeline:
+  - period: 2012-02-19 → 2024-06
+    identity: Drivezy (the company)
+    evidence: 'title: "Drivezy | Self-Drive Car, Bike & Scooter Rentals", later "Self
+      Drive Car Rentals in India | Drivezy"'
+  - period: 2025-01 → 2025-11
+    identity: bare WordPress shell
+    evidence: 'title: "DRIVEZY" on a stock WordPress 6.7.1 install with no rental
+      product — the operating site was already gone'
+  - period: 2025-12-11 → 2026-05-11
+    identity: unrelated third party — Indonesian online-gambling SEO spam
+    evidence: 'title: "MULTIBET88: Link Game Online yang Sering Bikin Member Auto WD",
+      Yoast SEO v25.4; one 2026-01-22 capture shows a "One moment, please..." interstitial'
+  - period: 2026-05-11 → present
+    identity: nothing — zone unresolvable
+    evidence: authoritative Cloudflare nameservers answer REFUSED; recursive lookups
+      SERVFAIL
+  last_capture_of_the_real_company: '2024-06 (approx; the 2025-01-01 capture is already
+    the WordPress shell)'
+  correction: >-
+    Supersedes the round-1 statement that "the consumer site was captured as recently as
+    2025-10-19". Captures continued to 2026-05-11, but they are captures of a squatted
+    domain, not of Drivezy.
+archived_api_surface:
+  note: >-
+    Recorded as HISTORY, not as a contract. No OpenAPI, Swagger, GraphQL, AsyncAPI or
+    Postman artifact is derived from these URLs, and none is written to this repo — the
+    endpoints below are archived request URLs from the consumer app, which is evidence
+    that a private backend existed, not evidence of a published API product.
+  source: http://web.archive.org/cdx/search/cdx?url=secure.drivezy.com&matchType=host
+  host: secure.drivezy.com
+  observed_paths:
+  - /api/booking
+  - /api/userCart
+  - /api/admin/accident
+  - /city
+  - /cityLinks
+  - /property
+  - /lookup/{id}
+  - /loginCheck
+  - /splash
+  shape: >-
+    Query strings carry includes=, query=, order= and limit= — the request grammar of
+    drivezy/laravel-record-manager, the company's own open-source package. The backend
+    was built on the Laravel libraries listed in packages/drivezy-packages.yml.
+  developer_subdomains_ever_archived: none — developer.drivezy.com, docs.drivezy.com and
+    api.drivezy.com have zero Wayback captures, which is consistent with a company that
+    never ran a developer program.
+unverified_hosts:
+- host: https://drivezy.in
+  affiliation: unverified
+  note: >-
+    A live WordPress car-rental site trading under the Drivezy name. Nothing on it
+    names JustRide, Drivezy Inc, or the Bengaluru company this profile covers, so it
+    is NOT treated as the company's website and no pointer is wired to it. Probed for
+    completeness on 2026-08-12: /.well-known/security.txt, /openid-configuration,
+    /oauth-authorization-server, /api-catalog, /ai-plugin.json, /agent-card.json,
+    /agent.json, /openapi.json, /openapi.yaml, /swagger.json, /api-docs and /llms.txt
+    ALL returned 404 (WordPress HTML 404 body). Its /wp-json/ index returns 200 — the
+    stock WordPress REST API of the CMS, not a Drivezy product API.
+x-evidence:
+  checked: '2026-08-12'
+  round: 2
+  hits: 0
+  live_probes:
+  - url: https://drivezy.com/
+    status: 0
+    note: curl exit — hostname does not resolve
+  - url: https://www.drivezy.com/
+    status: 0
+  - url: https://secure.drivezy.com/
+    status: 0
+  - url: https://api.drivezy.com/
+    status: 0
+  - url: https://drivezy.in/
+    status: 200
+    note: unaffiliated WordPress site, see unverified_hosts
+  - url: https://drivezy.in/openapi.json
+    status: 404
+  - url: https://drivezy.in/swagger.json
+    status: 404
+  - url: https://drivezy.in/llms.txt
+    status: 404
+  - url: https://drivezy.in/.well-known/agent-card.json
+    status: 404
+  - url: https://api.github.com/orgs/drivezy/repos?per_page=100
+    status: 200
+    note: 14 repos; every git tree walked for openapi/swagger/asyncapi/.proto/graphql/postman/apis.json/llms.txt/.well-known
+      — zero matches
+  agent_card: >-
+    NO HIT. No a2a/ artifact is written. Per the pipeline rule this artifact is
+    search-only and must never be authored on the provider's behalf.
