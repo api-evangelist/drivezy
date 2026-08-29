@@ -18,6 +18,17 @@ description: 'Drivezy — founded in Bengaluru, India in 2015 and originally lau
   the github.com/drivezy organization and thirteen packages on Packagist and npm —
   internal Laravel and JavaScript platform libraries, not API client SDKs.'
 url: https://raw.githubusercontent.com/api-evangelist/drivezy/refs/heads/main/apis.yml
+deliveryModel:
+  model: library
+  open_source: false
+  commercial: false
+  callable_host: false
+  label: Library · distributed through package registries, no callable service
+  confidence: low
+  source:
+  - none
+  generated: '2026-08-28'
+  method: derived
 image: https://avatars.githubusercontent.com/u/33040400?v=4
 x-type: company
 x-source: harvest:secondary-market
